@@ -42,10 +42,10 @@
 
 .yearText {
     position: absolute;
-    writing-mode: sideways-lr;
+    transform: rotate(.75turn);
     margin: 0;
     top: 10px;
-    left: -40px;
+    left: -50px;
     font-size: calc(8px + 1vmin);
 }
 
