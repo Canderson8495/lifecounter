@@ -84,6 +84,8 @@ function App() {
         <div className="container" style={{marginInline: margins}}>
             <h1 className="title"> Life Counter </h1>
             <div className="weekHolderBox">
+              <p className='weekText'> Weeks ... </p>
+              <p className='yearText'> ... Years </p>
                 {renderWeekBoxes(90, boxWidth, innerPadding)}
             </div> 
          </div>

@@ -5,12 +5,13 @@
 
 .container {
     min-height: 100vh;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(10px + 1vmin);
     color: white;
     padding-top: 5vh;
 }
 
 .weekHolderBox {
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -19,6 +20,7 @@
 
 .title {
     margin-bottom: 5vh;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .bigWeek {
@@ -28,4 +30,21 @@
 .smallWeek {
     background-color: white;
     overflow: hidden;
+}
+
+.weekText {
+    position: absolute;
+    margin: 0;
+    top: -30px;
+    left: 10px;
+    font-size: calc(8px + 1vmin);
+}
+
+.yearText {
+    position: absolute;
+    writing-mode: sideways-lr;
+    margin: 0;
+    top: 10px;
+    left: -30px;
+    font-size: calc(8px + 1vmin);
 }
