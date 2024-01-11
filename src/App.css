@@ -35,7 +35,7 @@
 .weekText {
     position: absolute;
     margin: 0;
-    top: -30px;
+    top: -40px;
     left: 10px;
     font-size: calc(8px + 1vmin);
 }
@@ -45,6 +45,20 @@
     writing-mode: sideways-lr;
     margin: 0;
     top: 10px;
-    left: -30px;
+    left: -40px;
     font-size: calc(8px + 1vmin);
+}
+
+.yLabel {
+    position: absolute;
+    margin: 0;
+    left: -15px;
+    font-size: calc(2px + 1vmin);
+}
+
+.xLabel {
+    position: absolute;
+    margin: 0;
+    top: -15px;
+    font-size: calc(2px + 1vmin);
 }

@@ -42,6 +42,26 @@ function App() {
     for(var x = 0; x < 52*rows; x++){
       weekHolder.push(
         <div className="bigWeek" style={{width: boxWidth, height: boxWidth}}> 
+          {
+            ((x % 52 == 0) && ((x / 52) % 5 == 0)) &&
+              (
+                <p className="yLabel"> {x/52}</p>
+              )
+              
+          }
+          {
+            (x == 0) &&
+            (
+              <p className="xLabel"> 1</p>
+            )
+
+          }
+          {
+            (((x+1) % 5 == 0) && (x<52)) &&
+              (
+                  <p className="xLabel"> {x+1}</p>
+              )
+          }
           <div className="smallWeek" style={{width: boxWidth-(innerPadding*2), height: boxWidth-(innerPadding*2),margin: innerPadding, backgroundColor: x < weeksFinished ? '#FF3131' : '#FFFFFF'}}></div>
         </div>
       )
