@@ -51,15 +51,30 @@ function App() {
 
 
   const render = () => {
-    let margins = Math.floor(width * 0.1);
 
-    let innerContainer = width - (margins*2);
+    let margins;
+    let innerContainer;
+    let boxWidth;
+    let innerPadding;
+
+    if(width < 500){
+      margins = Math.floor(width * 0.1);
+
+      
+
+    }else{
+      margins = Math.floor((width - 400) / 2);
+    }
+
+    innerContainer = width - (margins*2);
+    console.log("inner" + innerContainer);
     margins = margins + ((innerContainer % 52)/2);
     innerContainer = innerContainer - (innerContainer % 52);
-    const boxWidth = Math.floor(innerContainer / 52);
+    boxWidth = Math.floor(innerContainer / 52);
 
 
-    let innerPadding = Math.ceil(boxWidth / 8);
+    innerPadding = Math.ceil(boxWidth / 8);
+    
 
 
     
@@ -67,7 +82,7 @@ function App() {
     return (
       <div className="App">
         <div className="container" style={{marginInline: margins}}>
-            <h1 className="title"> Life Counter</h1>
+            <h1 className="title"> Life Counter </h1>
             <div className="weekHolderBox">
                 {renderWeekBoxes(90, boxWidth, innerPadding)}
             </div> 

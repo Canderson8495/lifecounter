@@ -7,13 +7,13 @@
     min-height: 100vh;
     font-size: calc(10px + 2vmin);
     color: white;
+    padding-top: 5vh;
 }
 
 .weekHolderBox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    min-height: 90vh;
     align-content: flex-start;
 }
 
