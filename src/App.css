@@ -45,7 +45,7 @@
     transform: rotate(.75turn);
     margin: 0;
     top: 10px;
-    left: -50px;
+    left: -55px;
     font-size: calc(8px + 1vmin);
 }
 
@@ -61,4 +61,19 @@
     margin: 0;
     top: -15px;
     font-size: calc(2px + 1vmin);
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    background-color: #282c34;
+    color: white;
+    border: 0;
+}
+
+.react-datepicker__input-container input {
+    background-color: #333842;
+    border: 5px solid #333842;
+    border-radius: 1px;
+    text-align: center;
 }
