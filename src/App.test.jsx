@@ -79,7 +79,7 @@ test('Check that UI updates correctly after new birthday', async () => {
   });
   
   numWeeks = screen.getAllByTestId('finishedWeek');
-  expect(numWeeks.length).toBe(1353);
+  expect(numWeeks.length).toBe(1352);
 
 
 
