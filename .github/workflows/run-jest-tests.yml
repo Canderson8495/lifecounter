@@ -2,8 +2,8 @@ name: Run jest tests
 on: [push]
 jobs:
   jest-test:
+    runs-on: ubuntu-latest
     steps:
-      runs-on: ubuntu-latest
       - name: Check out repository code
         uses: actions/checkout@v4
 
