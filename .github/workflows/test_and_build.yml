@@ -12,15 +12,19 @@ jobs:
 
       - name: Runs test
         run: npm test
-  docker_image:
+  build_and_push_docker_image:
     needs: jest-test
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: login into docker registry
-        run: docker login https://registry.studien.us
+      - name: Login to GitLab
+        uses: docker/login-action@v3
+        with:
+          registry: https://registry.studien.us
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }} 
 
       - name: Build and push docker image
         run: |
