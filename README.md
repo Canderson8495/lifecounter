@@ -10,3 +10,10 @@ This should be 99% responsive on all devices and screen sizes, and it will be ho
 I'll probably do some UI changes to make it more artistic, so that you can print this out. Mark time periods with different colored weeks, and much much more.
 
 This is what the app looks like right now as of 01/11/2024
+
+
+
+<p align="center">
+  <img width="543" alt="image" src="https://github.com/Canderson8495/lifecounter/assets/21071497/76b706ba-f6b7-4396-90ca-877b7ca9b53b">
+</p>
+
