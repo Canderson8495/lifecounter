@@ -102,7 +102,7 @@ function App() {
       <div className="App">
         <div className="container" style={{marginInline: margins}}>
             <div className="title" >
-              <h1 > LifeCounter </h1>
+              <h1 > Life Counter </h1>
               <DatePicker
                 wrapperClassName="datePicker"
                 selected={birthday}
