@@ -12,7 +12,7 @@ import {
 
 
 function App() {
-  
+
 
 
   const [birthday, setBirthday] = useState(new Date('03/16/1999'));
@@ -102,7 +102,7 @@ function App() {
       <div className="App">
         <div className="container" style={{marginInline: margins}}>
             <div className="title" >
-              <h1 > Life Counter </h1>
+              <h1 > LifeCounter </h1>
               <DatePicker
                 wrapperClassName="datePicker"
                 selected={birthday}
