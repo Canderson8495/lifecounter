@@ -1,0 +1,32 @@
+name: Run jest tests
+on: [push]
+jobs:
+  jest-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Runs npm install
+        run: npm install
+
+      - name: Runs test
+        run: npm test
+  docker_image:
+    needs: jest-test
+    runs-on: ubuntu-latest
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: login into docker registry
+        run: docker login https://registry.studien.us
+
+      - name: Build and push docker image
+        run: |
+          docker buildx build --platform linux/amd64 -t lifecounter .
+          docker tag docker.io/library/lifecounter registry.studien.us/lifecounter
+          docker push registry.studien.us/lifecounter          
+
+
+
