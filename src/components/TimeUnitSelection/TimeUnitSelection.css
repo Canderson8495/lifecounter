@@ -1,0 +1,17 @@
+select {
+    /* ... */
+    background-color: #333842;
+    color: #fff;
+    border: 0;
+    height: 28px;
+}
+
+.custom-select::before {
+    /* ... */
+    border: 0;
+}
+
+.custom-select::after {
+    /* ... */
+    border: 0;
+}

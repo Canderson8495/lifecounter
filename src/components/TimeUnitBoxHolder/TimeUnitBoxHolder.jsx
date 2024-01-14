@@ -27,11 +27,29 @@ function WeekBoxHolder(props) {
     return weeks;
   };
 
+  const monthDiff = (first, second) => {
+
+    let months = (second.getFullYear() - first.getFullYear()) * 12;
+    months = months + (second.getMonth() - first.getMonth());
+    return months;
+
+  }
+
+  const yearDiff = (first, second) => {
+
+    let years = second.getFullYear() - first.getFullYear()
+    if(second.getMonth() < first.getMonth() || (second.getMonth() === first.getMonth() && second.getDate() < first.getDate())){
+      years--;
+    }
+    return years;
+
+  }
+
   const renderValueAxisLabels = (currTimeUnit) => {
     const labelHolder = [];
 
     if (currTimeUnit % timeUnitConfig.numColumns === 0 && (currTimeUnit / timeUnitConfig.numColumns) % 5 === 0) {
-      labelHolder.push(<p className="yLabel"> {currTimeUnit / timeUnitConfig.numColumns}</p>);
+      labelHolder.push(<p className="yLabel"> {(currTimeUnit / timeUnitConfig.numColumns)*timeUnitConfig.rowValueMultiplier}</p>);
     }
     if (currTimeUnit === 0) {
       labelHolder.push(<p className="xLabel"> 1 </p>);
@@ -49,6 +67,10 @@ function WeekBoxHolder(props) {
     let timeUnitsFinished;
     if(props.timeType === TimeType.Week){
       timeUnitsFinished = weekDiff(birthday, new Date());
+    }else if (props.timeType === TimeType.Month){
+      timeUnitsFinished = monthDiff(birthday, new Date());
+    }else if (props.timeType === TimeType.Year){
+      timeUnitsFinished = yearDiff(birthday, new Date());
     }
     
     let weekHolder = [];

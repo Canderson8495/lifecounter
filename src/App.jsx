@@ -10,11 +10,12 @@ import TimeUnitBoxHolder from "./components/TimeUnitBoxHolder/TimeUnitBoxHolder"
 import useDynamicStyles from "./hooks/useDynamicStyles";
 
 import {TimeType} from './constants/TimeType'
+import TimeUnitSelection from "./components/TimeUnitSelection/TimeUnitSelection";
 
 function App() {
   const [birthday, setBirthday] = useState(new Date("03/16/1999"));
 
-  const [timeType] = useState(TimeType.Week)
+  const [timeType, setTimeType] = useState(TimeType.Week)
 
   const dynamicStyles = useDynamicStyles(timeType);
 
@@ -28,6 +29,7 @@ function App() {
         >
           <div className="header">
             <h1> Life Counter </h1>
+            <TimeUnitSelection setTimeType={setTimeType} timeType={timeType}/>
             <DatePicker
               wrapperClassName="datePicker"
               selected={birthday}

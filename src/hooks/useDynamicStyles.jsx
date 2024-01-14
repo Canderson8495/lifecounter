@@ -10,7 +10,7 @@ export default function useDynamicStyles(timeType) {
 
   const [width] = useWindowSize();
 
-  const generateDynamicStyles = () => {
+  const generateWeekDynamicStyles = () => {
     let margins;
     let innerContainer;
     let boxWidth;
@@ -36,5 +36,8 @@ export default function useDynamicStyles(timeType) {
     };
     
   };
-  return generateDynamicStyles();
+
+
+
+  return generateWeekDynamicStyles();
 }
