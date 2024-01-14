@@ -31,7 +31,7 @@ export default function TimeUnitConfig(timeType) {
         columnLabel: "Years",
         numRows: 9,
         rowLabel: "Decades",
-        rowValueMultiplier: 10,
+        rowValueMultiplier: 1,
     };
   };
 

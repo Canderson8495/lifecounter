@@ -19,6 +19,7 @@
     position: absolute;
     margin: 0;
     left: -15px;
+    transform: translate(0, -3px);
     font-size: calc(2px + 1vmin);
 }
 

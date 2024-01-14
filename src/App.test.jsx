@@ -144,6 +144,21 @@ test('renders app and checks y axis for decades ', async () => {
   });
   const linkElement = screen.getByText(/Decades/i);
   expect(linkElement).toBeInTheDocument();
+
+});
+
+test('renders app and checks year rowValueMultiplier', async () => {
+  const user = userEvent.setup({delay: null});
+  render(<App />);
+
+  let unitSelect = screen.getByDisplayValue(TimeType.Week);
+
+  await act(async () => {
+    user.selectOptions(unitSelect, TimeType.Year)
+  });
+  const linkElement = screen.getAllByText(/5/);
+  expect(linkElement.length).toBeGreaterThan(0);
+
 });
 
 test('renders Year and checks count', async () => {
@@ -161,7 +176,7 @@ test('renders Year and checks count', async () => {
   expect(numWeeks.length).toBe(10*9);
 });
 
-test('check for 12 finished months, 1 year after default birthday', async () => {
+test('check for 1 finished year, 1 year after default birthday', async () => {
   const user = userEvent.setup({delay: null});
   jest
   .useFakeTimers()
@@ -179,7 +194,7 @@ test('check for 12 finished months, 1 year after default birthday', async () => 
 });
 
 
-test('check for 274 months, 25 year after default birthday', async () => {
+test('check for 25 years, 25 year after default birthday', async () => {
   const user = userEvent.setup({delay: null});
   jest
   .useFakeTimers()
