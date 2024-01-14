@@ -27,11 +27,11 @@ export default function TimeUnitConfig(timeType) {
 
   const YearType = () => {
     return {
-        numColumns: 10,
+        numColumns: 9,
         columnLabel: "Years",
-        numRows: 9,
-        rowLabel: "Decades",
-        rowValueMultiplier: 1,
+        numRows: 10,
+        rowLabel: "Years",
+        rowValueMultiplier: 10,
     };
   };
 

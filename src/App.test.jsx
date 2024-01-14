@@ -129,11 +129,11 @@ test('renders app for years and checks x axis for years', async () => {
   await act(async () => {
     user.selectOptions(unitSelect, TimeType.Year)
   });
-  const linkElement = screen.getByText(/Years/i);
-  expect(linkElement).toBeInTheDocument();
+  const linkElement = screen.getAllByText(/Years/i);
+  expect(linkElement.length).toBeGreaterThanOrEqual(2);
 });
 
-test('renders app and checks y axis for decades ', async () => {
+test('renders app and checks y axis for years ', async () => {
   const user = userEvent.setup({delay: null});
   render(<App />);
 
@@ -142,8 +142,8 @@ test('renders app and checks y axis for decades ', async () => {
   await act(async () => {
     user.selectOptions(unitSelect, TimeType.Year)
   });
-  const linkElement = screen.getByText(/Decades/i);
-  expect(linkElement).toBeInTheDocument();
+  const linkElement = screen.getAllByText(/Years/i);
+  expect(linkElement.length).toBeGreaterThanOrEqual(2);
 
 });
 
@@ -156,7 +156,7 @@ test('renders app and checks year rowValueMultiplier', async () => {
   await act(async () => {
     user.selectOptions(unitSelect, TimeType.Year)
   });
-  const linkElement = screen.getAllByText(/5/);
+  const linkElement = screen.getAllByText(/50/);
   expect(linkElement.length).toBeGreaterThan(0);
 
 });
