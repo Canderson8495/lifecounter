@@ -10,57 +10,9 @@
     padding-top: 5vh;
 }
 
-.weekHolderBox {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-start;
-}
-
-.title {
+.header {
     margin-bottom: 5vh;
     font-family: 'Work Sans', sans-serif;
-}
-
-.bigWeek {
-    display: block;
-}
-
-.smallWeek {
-    background-color: white;
-    overflow: hidden;
-}
-
-.weekText {
-    position: absolute;
-    margin: 0;
-    top: -40px;
-    left: 10px;
-    font-size: calc(8px + 1vmin);
-}
-
-.yearText {
-    position: absolute;
-    transform: rotate(.75turn);
-    margin: 0;
-    top: 10px;
-    left: -55px;
-    font-size: calc(8px + 1vmin);
-}
-
-.yLabel {
-    position: absolute;
-    margin: 0;
-    left: -15px;
-    font-size: calc(2px + 1vmin);
-}
-
-.xLabel {
-    position: absolute;
-    margin: 0;
-    top: -15px;
-    font-size: calc(2px + 1vmin);
 }
 
 .react-datepicker-wrapper,

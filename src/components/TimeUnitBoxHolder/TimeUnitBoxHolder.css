@@ -1,0 +1,38 @@
+.HorizCatAxisText {
+    position: absolute;
+    margin: 0;
+    top: -40px;
+    left: 10px;
+    font-size: calc(8px + 1vmin);
+}
+
+.VertCatAxisText {
+    position: absolute;
+    transform: rotate(.75turn);
+    margin: 0;
+    top: 10px;
+    left: -55px;
+    font-size: calc(8px + 1vmin);
+}
+
+.yLabel {
+    position: absolute;
+    margin: 0;
+    left: -15px;
+    font-size: calc(2px + 1vmin);
+}
+
+.xLabel {
+    position: absolute;
+    margin: 0;
+    top: -15px;
+    font-size: calc(2px + 1vmin);
+}
+
+.TimeUnitHolderBox {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}

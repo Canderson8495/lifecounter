@@ -24,7 +24,7 @@ test('renders app and checks x axis', () => {
 
 test('renders weeks and checks counts', () => {
   render(<App />);
-  const numWeeks = screen.getAllByTestId('week');
+  const numWeeks = screen.getAllByTestId('timeUnitBox');
   expect(numWeeks.length).toBe(52*90);
 });
 
@@ -33,7 +33,7 @@ test('check for 52 finished weeks, 1 year after default birthday', () => {
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2000'));
   render(<App />);
-  const numWeeks = screen.getAllByTestId('finishedWeek');
+  const numWeeks = screen.getAllByTestId('finishedTimeUnit');
   expect(numWeeks.length).toBe(52);
 });
 
@@ -43,7 +43,7 @@ test('check for 1300, 25 year after default birthday', () => {
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2024'));
   render(<App />);
-  const numWeeks = screen.getAllByTestId('finishedWeek');
+  const numWeeks = screen.getAllByTestId('finishedTimeUnit');
   expect(numWeeks.length).toBe(1300);
 });
 
@@ -61,7 +61,7 @@ test('Check that UI updates correctly after new birthday', async () => {
 
   render(<App />);
 
-  let numWeeks = screen.getAllByTestId('finishedWeek');
+  let numWeeks = screen.getAllByTestId('finishedTimeUnit');
   expect(numWeeks.length).toBe(1300);
 
 
@@ -78,7 +78,7 @@ test('Check that UI updates correctly after new birthday', async () => {
     
   });
   
-  numWeeks = screen.getAllByTestId('finishedWeek');
+  numWeeks = screen.getAllByTestId('finishedTimeUnit');
   expect(numWeeks.length).toBe(1352);
 
 

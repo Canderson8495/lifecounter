@@ -1,7 +1,12 @@
 import { useWindowSize } from "@react-hook/window-size";
 
+import TimeUnitConfig from "../components/TimeUnitConfig/TimeUnitConfig";
 
-export default function useDynamicStyles() {
+
+
+export default function useDynamicStyles(timeType) {
+
+  const timeUnitConfig = TimeUnitConfig(timeType);
 
   const [width] = useWindowSize();
 
@@ -18,9 +23,9 @@ export default function useDynamicStyles() {
     }
 
     innerContainer = width - margins * 2;
-    margins = margins + (innerContainer % 52) / 2;
-    innerContainer = innerContainer - (innerContainer % 52);
-    boxWidth = Math.floor(innerContainer / 52);
+    margins = margins + (innerContainer % timeUnitConfig.numColumns) / 2;
+    innerContainer = innerContainer - (innerContainer % timeUnitConfig.numColumns);
+    boxWidth = Math.floor(innerContainer / timeUnitConfig.numColumns);
 
     innerBoxPadding = Math.ceil(boxWidth / 8);
 

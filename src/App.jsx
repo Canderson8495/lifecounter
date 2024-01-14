@@ -5,14 +5,18 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import WeekBoxHolder from "./components/WeekBoxHolder";
+import TimeUnitBoxHolder from "./components/TimeUnitBoxHolder/TimeUnitBoxHolder";
 
-import useDynamicStyles from "./hooks/useDyanmicStyles";
+import useDynamicStyles from "./hooks/useDynamicStyles";
+
+import {TimeType} from './constants/TimeType'
 
 function App() {
   const [birthday, setBirthday] = useState(new Date("03/16/1999"));
 
-  const dynamicStyles = useDynamicStyles();
+  const [timeType] = useState(TimeType.Week)
+
+  const dynamicStyles = useDynamicStyles(timeType);
 
   const render = () => {
 
@@ -22,7 +26,7 @@ function App() {
           className="container"
           style={{ marginInline: dynamicStyles.margins }}
         >
-          <div className="title">
+          <div className="header">
             <h1> Life Counter </h1>
             <DatePicker
               wrapperClassName="datePicker"
@@ -30,9 +34,9 @@ function App() {
               onChange={(date) => setBirthday(date)}
             />
           </div>
-          <WeekBoxHolder
-            rows={90}
+          <TimeUnitBoxHolder
             birthday={birthday}
+            timeType={timeType}
           />
         </div>
       </div>
