@@ -11,6 +11,8 @@ import {
 } from '@react-hook/window-size'
 
 
+
+
 function App() {
 
 
@@ -31,51 +33,70 @@ function App() {
 
   }
 
+  const renderValueAxisLabels = (currTimeUnit) => {
+
+    const labelHolder = [];
+
+    if((currTimeUnit % 52 === 0) && ((currTimeUnit / 52) % 5 === 0)){
+      labelHolder.push(
+        (
+          <p className="yLabel"> {currTimeUnit/52}</p>
+        )
+      );
+    }
+    if(currTimeUnit === 0){
+      labelHolder.push(
+        (
+          <p className="xLabel"> 1 </p>
+        )
+      );
+    }
+    if(((currTimeUnit+1) % 5 === 0) && (currTimeUnit<52)){
+      labelHolder.push(
+        (
+          <p className="xLabel"> {currTimeUnit+1}</p>
+        )
+      );
+    }
+    return labelHolder;
+    
+  }
+
 
   
-  const renderWeekBoxes = (rows, boxWidth, innerPadding) => {
+  const renderWeekBoxes = (rows) => {
+
+
+    const dynamicStyles = generateDynamicStyles();
 
 
 
     const weeksFinished = datediff( birthday,new Date())
     let weekHolder = [];
-    for(var x = 0; x < 52*rows; x++){
+    for(var currTimeUnit = 0; currTimeUnit < 52 * rows; currTimeUnit++){
       weekHolder.push(
-        <div key={x} data-testid='week' className="bigWeek" style={{width: boxWidth, height: boxWidth}}> 
-          {
-            ((x % 52 === 0) && ((x / 52) % 5 === 0)) &&
-              (
-                <p className="yLabel"> {x/52}</p>
-              )
-              
-          }
-          {
-            (x === 0) &&
-            (
-              <p className="xLabel"> 1</p>
-            )
-
-          }
-          {
-            (((x+1) % 5 === 0) && (x<52)) &&
-              (
-                  <p className="xLabel"> {x+1}</p>
-              )
-          }
-          <div data-testid={x < weeksFinished ? 'finishedWeek' : ''} className="smallWeek" style={{width: boxWidth-(innerPadding*2), height: boxWidth-(innerPadding*2),margin: innerPadding, backgroundColor: x < weeksFinished ? '#FF3131' : '#FFFFFF'}}></div>
+        <div key={currTimeUnit} data-testid='week' className="bigWeek" style={{width: dynamicStyles.boxWidth, height: dynamicStyles.boxWidth}}> 
+          {renderValueAxisLabels(currTimeUnit)}
+          <div
+            data-testid={currTimeUnit < weeksFinished ? 'finishedWeek' : ''}
+            className="smallWeek"
+            style={{
+              width: dynamicStyles.boxWidth-(dynamicStyles.innerBoxPadding*2),
+              height: dynamicStyles.boxWidth-(dynamicStyles.innerBoxPadding*2),
+              margin: dynamicStyles.innerBoxPadding,
+              backgroundColor: currTimeUnit < weeksFinished ? '#FF3131' : '#FFFFFF'}}></div>
         </div>
       )
     }
     return weekHolder;
   }
 
-
-  const render = () => {
+  const generateDynamicStyles = () => {
 
     let margins;
     let innerContainer;
     let boxWidth;
-    let innerPadding;
+    let innerBoxPadding;
 
     if(width < 500){
       margins = Math.floor(width * 0.1);
@@ -92,15 +113,23 @@ function App() {
     boxWidth = Math.floor(innerContainer / 52);
 
 
-    innerPadding = Math.ceil(boxWidth / 8);
-    
+    innerBoxPadding = Math.ceil(boxWidth / 8);
+
+    return {
+      margins: margins,
+      boxWidth: boxWidth,
+      innerBoxPadding: innerBoxPadding
+    }
+  }
 
 
-    
+  const render = () => {
 
+    const dynamicStyles = generateDynamicStyles();
+  
     return (
       <div className="App">
-        <div className="container" style={{marginInline: margins}}>
+        <div className="container" style={{marginInline: dynamicStyles.margins}}>
             <div className="title" >
               <h1 > Life Counter </h1>
               <DatePicker
@@ -112,7 +141,7 @@ function App() {
             <div className="weekHolderBox">
               <p className='weekText'> Weeks ... </p>
               <p className='yearText'> ... Years </p>
-                {renderWeekBoxes(90, boxWidth, innerPadding)}
+                {renderWeekBoxes(90)}
             </div> 
          </div>
       </div>
