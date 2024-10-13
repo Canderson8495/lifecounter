@@ -4,6 +4,7 @@ WORKDIR /lifecounter
 
 COPY public/ /lifecounter/public
 COPY src/ /lifecounter/src
+COPY .env /lifecounter/
 COPY package.json /lifecounter/
 
 RUN npm install
