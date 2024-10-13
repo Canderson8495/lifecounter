@@ -17,7 +17,11 @@ jobs:
               registry: https://registry.studien.us
               username: ${{ secrets.REGISTRY_USERNAME }}
               password: ${{ secrets.REGISTRY_PASSWORD }} 
-    
+
+          - name: Build .env file in root directory
+            run: |
+                echo REACT_APP_GOOGLE_OAUTH_CLIENT_ID={{ secrets.REACT_APP_GOOGLE_OAUTH_CLIENT_ID }} > .env
+
           - name: Build and push docker image
             run: |
               docker buildx build --platform linux/amd64 -t lifecounter .
