@@ -1,0 +1,8 @@
+/* Style the login Container to center everything */
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
