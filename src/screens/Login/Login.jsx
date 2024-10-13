@@ -1,9 +1,9 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/features/user/userSlice";
+import "./Login.css";
 
 function Login() {
-  const idToken = useSelector((state) => state.user.idToken);
 
   const dispatch = useDispatch();
 
@@ -11,10 +11,7 @@ function Login() {
     return (
       <>
         <h1> Login </h1>
-        {idToken !== null ? (
-          idToken
-        ) : (
-          <>
+          <div className="loginContainer">
             <GoogleLogin
               onSuccess={(credentialResponse) => {
                 dispatch(setUser(credentialResponse.credential));
@@ -22,9 +19,9 @@ function Login() {
               onError={() => {
                 console.log("Login Failed");
               }}
+              width={'200px'}
             />
-          </>
-        )}
+          </div>
       </>
     );
   };
