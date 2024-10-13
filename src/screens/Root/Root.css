@@ -1,0 +1,64 @@
+.App {
+    text-align: center;
+    background-color: #282c34;
+}
+
+.container {
+    min-height: 100vh;
+    font-size: calc(10px + 1vmin);
+    color: white;
+    padding-top: 5vh;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Make nav bar sticky to the top of the page */
+
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    padding-bottom: 1vh;
+    border-bottom: 1px solid white;
+    position: sticky;
+    top: 0;
+    background-color: #282c34;
+    z-index: 100;
+}
+
+.NavEntry {
+    background-color: transparent;
+    border: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+}
+
+Link:visited {
+    text-decoration: none;
+    color: white;
+}
+
+Link:hover {
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.NavEntry:focus {
+    text-decoration: none;
+    color: white;
+}
+
+.NavEntry:hover,
+.NavEntry:active {
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid white;
+}
