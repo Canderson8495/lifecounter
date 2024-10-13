@@ -1,17 +1,17 @@
 import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from './App';
+import {Visualizer} from './screens';
 import { TimeType } from './constants/TimeType';
 
 
 test('renders learn react link', () => {
-  render(<App />);
+  render(<Visualizer />);
   const linkElement = screen.getByText(/Life Counter/i);
   expect(linkElement).toBeInTheDocument();
 });
 
-test('renders app and checks for y axis', () => {
-  render(<App />);
+test('renders Visualizer and checks for y axis', () => {
+  render(<Visualizer />);
   const linkElement = screen.getByText(/Years/i);
   expect(linkElement).toBeInTheDocument();
 });
@@ -19,14 +19,14 @@ test('renders app and checks for y axis', () => {
 
 //Week checks
 
-test('renders app for weeks and checks x axis for weeks', () => {
-  render(<App />);
+test('renders Visualizer for weeks and checks x axis for weeks', () => {
+  render(<Visualizer />);
   const linkElement = screen.getByText(/Weeks/i);
   expect(linkElement).toBeInTheDocument();
 });
 
 test('renders weeks and checks counts', () => {
-  render(<App />);
+  render(<Visualizer />);
   const numWeeks = screen.getAllByTestId('timeUnitBox');
   expect(numWeeks.length).toBe(52*90);
 });
@@ -35,7 +35,7 @@ test('check for 52 finished weeks, 1 year after default birthday', () => {
   jest
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2000'));
-  render(<App />);
+  render(<Visualizer />);
   const numWeeks = screen.getAllByTestId('finishedTimeUnit');
   expect(numWeeks.length).toBe(52);
 });
@@ -45,16 +45,16 @@ test('check for 1300 weeks, 25 year after default birthday', () => {
   jest
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2024'));
-  render(<App />);
+  render(<Visualizer />);
   const numWeeks = screen.getAllByTestId('finishedTimeUnit');
   expect(numWeeks.length).toBe(1300);
 });
 
 //Month checks
 
-test('renders app for months and checks x axis for months', async () => {
+test('renders Visualizer for months and checks x axis for months', async () => {
   const user = userEvent.setup({delay: null});
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -68,7 +68,7 @@ test('renders app for months and checks x axis for months', async () => {
 
 test('renders months and checks count', async () => {
   const user = userEvent.setup({delay: null});
-  render(<App />);
+  render(<Visualizer />);
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
   await act(async () => {
@@ -86,7 +86,7 @@ test('check for 12 finished months, 1 year after default birthday', async () => 
   jest
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2000'));
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -104,7 +104,7 @@ test('check for 274 months, 25 year after default birthday', async () => {
   jest
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2024'));
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -120,9 +120,9 @@ test('check for 274 months, 25 year after default birthday', async () => {
 
 //Year checks
 
-test('renders app for years and checks x axis for years', async () => {
+test('renders Visualizer for years and checks x axis for years', async () => {
   const user = userEvent.setup({delay: null});
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -133,9 +133,9 @@ test('renders app for years and checks x axis for years', async () => {
   expect(linkElement.length).toBeGreaterThanOrEqual(2);
 });
 
-test('renders app and checks y axis for years ', async () => {
+test('renders Visualizer and checks y axis for years ', async () => {
   const user = userEvent.setup({delay: null});
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -147,9 +147,9 @@ test('renders app and checks y axis for years ', async () => {
 
 });
 
-test('renders app and checks year rowValueMultiplier', async () => {
+test('renders Visualizer and checks year rowValueMultiplier', async () => {
   const user = userEvent.setup({delay: null});
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -163,7 +163,7 @@ test('renders app and checks year rowValueMultiplier', async () => {
 
 test('renders Year and checks count', async () => {
   const user = userEvent.setup({delay: null});
-  render(<App />);
+  render(<Visualizer />);
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
   await act(async () => {
@@ -181,7 +181,7 @@ test('check for 1 finished year, 1 year after default birthday', async () => {
   jest
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2000'));
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -199,7 +199,7 @@ test('check for 25 years, 25 year after default birthday', async () => {
   jest
   .useFakeTimers()
   .setSystemTime(new Date('03/16/2024'));
-  render(<App />);
+  render(<Visualizer />);
 
   let unitSelect = screen.getByDisplayValue(TimeType.Week);
 
@@ -224,7 +224,7 @@ test('Check that UI updates correctly after new birthday', async () => {
 
   
 
-  render(<App />);
+  render(<Visualizer />);
 
   let numWeeks = screen.getAllByTestId('finishedTimeUnit');
   expect(numWeeks.length).toBe(1300);
